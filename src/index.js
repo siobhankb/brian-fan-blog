@@ -12,15 +12,17 @@ root.render(
   </React.StrictMode>
 );
 
-// Here are the endpoints:
-// - ['POST'] /auth/users
-// - ['GET'] /auth/me *Token Auth Required
-// - ['PUT'] /auth/users/<user_id> *Token Auth Required
-// - ['DELETE'] /auth/users/<user_id> *Token Auth Required
-// - ['POST'] /auth/token  *Basic Auth Required
+// https://kekambas-blog.herokuapp.com/
 
-// - ['POST'] /blog/posts
-// - ['GET'] /blog/posts
-// - ['GET'] /blog/posts/<post_id>
-// - ['PUT'] /blog/posts/<post_id> *Token Auth Required
-// - ['DELETE'] /blog/posts/<post_id> *Token Auth Required
+// Here are the endpoints:
+// - ['POST'] /auth/users <-- create NEW USER
+// - ['GET'] /auth/me *Token Auth Required <--login
+// - ['PUT'] /auth/users/<user_id> *Token Auth Required <--EDIT user info
+// - ['DELETE'] /auth/users/<user_id> *Token Auth Required <--delete user
+// - ['POST'] /auth/token  *Basic Auth Required <--
+
+// - ['POST'] /blog/posts <-- create a NEW post
+// - ['GET'] /blog/posts <-- display ALL posts (available to anyone)
+// - ['GET'] /blog/posts/<post_id> <--display SINGLE post (available to anyone)
+// - ['PUT'] /blog/posts/<post_id> *Token Auth Required <-- edit existing post
+// - ['DELETE'] /blog/posts/<post_id> *Token Auth Required <-- delete post

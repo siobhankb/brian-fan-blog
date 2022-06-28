@@ -17,12 +17,10 @@ export default function Home() {
   console.log(posts);
   return (
     <>
-      <div className='container'>
         <h2>Home Page</h2>
         {posts.map((post) => (
           <PostCards key={post.id} post={post} />
         ))}
-      </div>
     </>
   );
 }

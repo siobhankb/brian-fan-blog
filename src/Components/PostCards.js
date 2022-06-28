@@ -8,12 +8,14 @@ export default function PostCards({ post }) {
         <div className="card mb-2">
           <div className="card-body">
             <h5 className="card-title">{post.title}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">by {post.author.username}</h6>
+            <h6 className="card-subtitle mb-2 text-muted">
+              by {post.author.username}
+            </h6>
             <p className="card-text">{post.content}</p>
             <Link to="/" className="card-link text-success">
               Home
             </Link>
-            <Link to={`${post.id}`} className="card-link">
+            <Link to={`single-post/${post.id}`} className="card-link">
               More...
             </Link>
           </div>

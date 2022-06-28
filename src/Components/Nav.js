@@ -22,16 +22,23 @@ export default function Nav(props) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="login">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="create-post">
-                  Create Post
-                </Link>
-              </li>
+              {props.loggedIn ? (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="create-post">
+                      Create Post
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="login">
+                      Login
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
