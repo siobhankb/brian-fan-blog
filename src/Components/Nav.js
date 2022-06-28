@@ -29,6 +29,11 @@ export default function Nav(props) {
                       Create Post
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/" onClick={props.logout}>
+                      Log Out
+                    </Link>
+                  </li>
                 </>
               ) : (
                 <>

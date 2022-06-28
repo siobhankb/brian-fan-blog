@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Routes, Route, useParams } from 'react-router-dom'
 import Nav from './Components/Nav';
 import Alert from './Components/Alerts';
+import Base from './Views/Base';
 import Home from './Views/Home';
 import Login from './Views/Login';
 import Signup from './Views/Signup';
@@ -49,9 +50,16 @@ function App(props) {
           logout={logout}
           onClick={logout}
         />
-        {message ? (<Alert message={message} category={category} flashMessage={flashMessage} />) : null}
+        {message ? (
+          <Alert
+            message={message}
+            category={category}
+            flashMessage={flashMessage}
+          />
+        ) : null}
         <div className="container">
           <Routes>
+            <Route path="base" element={<Base />}></Route>
             <Route path="/" element={<Home />}></Route>
             <Route path={"posts/:postId"} element={<SinglePost />}>
               <Route path={"edit"} element={<EditPostForm />} />
