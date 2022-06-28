@@ -14,16 +14,20 @@ export default function CreatePost(props) {
   // }, [props.loggedIn])
 
   const handleSubmit = (e) => {
+    console.log('I clicked!')
     e.preventDefault();
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let myToken = localStorage.getItem("token");
+    console.log('I tried to get a token:', myToken)
     myHeaders.append("Authorization", `Bearer ${myToken}`);
 
-    let title = e.target.title.value;
-    let body = e.target.body.value;
+    let postTitle = e.target.title.value;
+    console.log("target title= ", postTitle);
+    let postBody = e.target.body.value;
+    console.log("target body= ", postBody);
 
-    let data = JSON.stringify({ title, body });
+    let data = JSON.stringify({ postTitle, postBody });
     // - ['POST'] /auth/token  *Basic Auth Required
     fetch("https://kekambas-blog.herokuapp.com/blog/posts", {
       method: "POST",
@@ -52,30 +56,31 @@ export default function CreatePost(props) {
         <h6>this is where you will create a post</h6>
         <form className="form-control">
           <div className="mb-3">
-            <label htmlFor="FormControlTitle" className="form-label">
-              Title
-            </label>
             <input
               type="title"
               className="form-control"
-              id="FormControlTitle"
+              id="title"
               placeholder="Title of Post"
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="FormControlTextarea1" className="form-label">
-              What's on your mind?
-            </label>
             <textarea
               className="form-control"
-              id="FormControlTextarea1"
+              id="body"
               rows="3"
+              placeholder="What's on your mind?"
             ></textarea>
           </div>
-          <div className="mb-3">
-            <Link type="submit" class="btn btn-primary mb-3" onClick={handleSubmit} >
-              Publish
-            </Link>
+          <div className="row">
+            <div className="col col-4">
+              <button
+                type="submit"
+                className="form-control tn btn-primary my-3"
+                onClick={handleSubmit}
+              >
+                Publish
+              </button>
+            </div>
           </div>
         </form>
       </>

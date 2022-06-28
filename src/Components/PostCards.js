@@ -12,10 +12,7 @@ export default function PostCards({ post }) {
               by {post.author.username}
             </h6>
             <p className="card-text">{post.content}</p>
-            <Link to="/" className="card-link text-success">
-              Home
-            </Link>
-            <Link to={`single-post/${post.id}`} className="card-link">
+            <Link to={`posts/${post.id}`} className="card-link">
               More...
             </Link>
           </div>

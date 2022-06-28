@@ -53,7 +53,7 @@ function App(props) {
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path={"single-post/:postId"} element={<SinglePost />}>
+            <Route path={"posts/:postId"} element={<SinglePost />}>
               <Route path={"edit"} element={<EditPostForm />} />
             </Route>
             <Route

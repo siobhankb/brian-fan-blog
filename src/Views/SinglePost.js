@@ -8,10 +8,15 @@ export default function SinglePost() {
   const [post, setPost] = useState({});
   
   let params = useParams();
-  console.log(params);
+  console.log('params are:', params);
+  console.log("params.postId=", params.postId);
+  console.log(
+    "fetching from endpoint: ",
+    `https://kekambas-blog.herokuapp.com/blog/posts/${params.postId}`
+  );
 
   useEffect(() => {
-    fetch(`https://kekambas-blog.herokuapp.com/blog/posts/${params.postId}`,{
+    fetch(`https://kekambas-blog.herokuapp.com/blog/posts/${params.postId}`, {
       method: "GET",
       body: JSON.stringify(),
     })
@@ -19,8 +24,8 @@ export default function SinglePost() {
       .then((data) => {
         setPost(data);
       });
-  }, [params.postId]);
-  console.log(post);
+  }, []);
+  console.log("fetched post:", post);
   
   return (
     <>

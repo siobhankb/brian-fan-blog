@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 // https://kekambas-blog.herokuapp.com/
 // - ['GET'] /blog/posts/<post_id>
@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 // - ['DELETE'] /blog/posts/<post_id> *Token Auth Required
 
 export default function EditPostForm(props) {
+
+  let params = useParams();
+
 let navigate = useNavigate();
 
 useEffect(() => {
@@ -16,12 +19,6 @@ useEffect(() => {
   }
 }, [props.loggedIn]);
     
-    useEffect(() => {
-      if (!props.loggedIn) {
-        props.flashMessage("You must be logged in to edit a post", "danger");
-        navigate("/login");
-      }
-    }, [props.loggedIn]);
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -35,7 +32,7 @@ const handleSubmit = (e) => {
 
   let data = JSON.stringify({ title, body });
 
-  fetch("/blog/posts/<post_id>", {
+  fetch(`https://kekambas-blog.herokuapp.com/blog/posts/${params.postId}`, {
     method: "PUT",
     headers: myHeaders,
     body: data,
@@ -69,7 +66,7 @@ const handleSubmit = (e) => {
               type="email"
               className="form-control"
               id="exampleFormControlInput1"
-            //   placeholder={post.title}
+              //   placeholder={post.title}
             />
           </div>
           <div className="mb-3">
@@ -80,8 +77,17 @@ const handleSubmit = (e) => {
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
-            //   placeholder={post.content}
+              //   placeholder={post.content}
             ></textarea>
+          </div>
+          <div className="mb-3">
+            <Link
+              type="submit"
+              class="btn btn-primary mb-3"
+              onClick={handleSubmit}
+            >
+              Update
+            </Link>
           </div>
         </form>
       </div>

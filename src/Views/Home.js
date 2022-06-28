@@ -14,7 +14,7 @@ export default function Home() {
         setPosts(data);
       });
   }, []);
-  console.log(posts);
+  console.log('fetched posts =', posts);
   return (
     <>
         <h2>Home Page</h2>
