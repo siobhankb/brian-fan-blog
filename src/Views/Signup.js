@@ -7,7 +7,9 @@ export default function Signup(props) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     let password = e.target.password.value;
-    let confirmPass = e.target.confirmPass.value;
+    console.log('e.target.password=', password)
+    let confirmPass = e.target.confirmPassword.value;
+    console.log('e.target.confirmPassword=', confirmPass)
     if (password !== confirmPass){
             props.flashMessage("Whoops! Your passwords didn't match! Try again...", 'danger');
     } else {
@@ -47,30 +49,41 @@ export default function Signup(props) {
       <form onSubmit={handleFormSubmit}>
         <div className="form-group row mt-3 g-3">
           <div className="row mb-3">
-            <label htmlFor="username" className="col-2 col-form-label">
+            <label htmlFor="email" className="col-3 text-end col-form-label">
+              Email Address
+            </label>
+            <div className="col-6">
+              <input type="email" className="form-control" name="email" />
+            </div>
+          </div>
+          <div className="row mb-3">
+            <label htmlFor="username" className="col-3 text-end col-form-label">
               Username
             </label>
             <div className="col-6">
-              <input type="text" className="form-control" id="username" />
+              <input type="text" className="form-control" name="username" />
             </div>
           </div>
           <div className="row mb-3">
-            <label htmlFor="password" className="col-2 col-form-label">
+            <label htmlFor="password" className="col-3 text-end col-form-label">
               Password
             </label>
             <div className="col-6">
-              <input type="text" className="form-control" id="password" />
+              <input type="password" className="form-control" name="password" />
             </div>
           </div>
           <div className="row mb-3">
-            <label htmlFor="ConfirmPassword" className="col-2 col-form-label">
+            <label
+              htmlFor="ConfirmPassword"
+              className="col-3 text-end col-form-label"
+            >
               Confirm Password
             </label>
             <div className="col-6">
               <input
-                type="text"
+                type="password"
                 className="form-control"
-                id="ConfirmPassword"
+                name="ConfirmPassword"
               />
             </div>
           </div>
@@ -78,7 +91,7 @@ export default function Signup(props) {
             <div className="col-3 offset-2">
               <input
                 type="submit"
-                className="btn btn-success w-25"
+                className="btn btn-success w-60  offset-11"
                 value="Sign Up!"
               />
             </div>

@@ -8,7 +8,7 @@ import Signup from "./Views/Signup";
 import CreatePost from "./Views/CreatePost";
 import SinglePost from "./Views/SinglePost";
 import EditForm from "./Components/EditForm";
-import Modal from "./Components/Modal";
+import Modal from "./Components/DeleteModal";
 
 function App() {
   const [message, setMessage] = useState(null);
@@ -64,7 +64,7 @@ function App() {
           <Route
             path="create-post"
             element={
-              <CreatePost logUserIn={logUserIn} flashAlert={flashAlert} />
+              <CreatePost loggedIn={loggedIn} flashAlert={flashAlert} />
             }
           />
           <Route

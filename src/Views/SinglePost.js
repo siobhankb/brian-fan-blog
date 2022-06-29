@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link, Outlet} from 'react-router-dom'
+import { useParams, Link, Outlet } from 'react-router-dom'
+import DeleteConfirmation from '../Components/DeleteModal';
 
 
 export default function SinglePost(props) {
   const { postId } = useParams();
-  console.log(postId);
 
   const [post, setPost] = useState({});
+  const [id, setId] = useState(null);
+  const [displayDeleteModal, setDisplayDeleteModal] = useState();
+
+  const showDeleteModal = (id) => {
+    setId(id)
+    setDisplayDeleteModal(true);
+  }
+
+  const hideConfirmationModal = () => {
+    setDisplayDeleteModal(false);
+  }
+
 
   // https://kekambas-blog.herokuapp.com/
   // - ['GET'] /blog/posts/<post_id> <--display SINGLE post (no auth)
@@ -20,7 +32,7 @@ export default function SinglePost(props) {
 
   // - ['DELETE'] /blog/posts/<post_id> *Token Auth Required <-- delete post
   const deletePost = () => {
-    
+
     let myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
